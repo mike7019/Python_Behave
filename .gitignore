@@ -1,8 +1,11 @@
-# Ignore PyCharm IDE settings
-.idea/
+# Ignorar la carpeta .venv
+.venv/
 
-# Ignore Python bytecode files
-__pycache__/
+# Ignorar la carpeta allure-report
+allure-report/
 
-# Ignore Allure test results
+# Ignorar la carpeta allure-results
 allure-results/
+
+# Ignorar la carpeta .idea
+.idea/
