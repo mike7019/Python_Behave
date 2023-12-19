@@ -1,8 +1,11 @@
 import time
 
-from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 import ConfigReader
+
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
 
 
 class LoginPage:
@@ -16,19 +19,21 @@ class LoginPage:
 
     def open_the_login_page(self):
         self.driver.get(ConfigReader.read_configuration("basic info", "url"))
-        time.sleep(3)
+        time.sleep(1)
 
-    def fill_username(self):
+    def fill_username(self, username):
         user_field = self.driver.find_element(By.XPATH, self.txt_username)
         user_field.clear()
-        user_field.send_keys("admin")
+        user_field.send_keys(username)
 
-    def fill_password(self):
+    def fill_password(self, password):
         pass_field = self.driver.find_element(By.XPATH, self.txt_password)
         pass_field.clear()
-        pass_field.send_keys("serenity")
+        pass_field.send_keys(password)
 
     def click_on_login(self):
         login_button = self.driver.find_element(By.XPATH, self.btn_submit)
         login_button.click()
         time.sleep(3)
+
+
