@@ -1,0 +1,25 @@
+version: 2.1
+orbs:
+  python: circleci/python@1.1.0
+jobs:
+  build:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+            name: Set the Python Virtual Environment
+            command: |
+                python -m venv venv
+                source venv/bin/activate
+                pip install --upgrade pip
+      - python/install-packages:
+          pip-dependency-file: requirements.txt
+          pkg-manager: pip
+      - run:                    
+          command: |
+            behave features/business.feature
+
+workflows:
+  main:
+    jobs:
+      - build
