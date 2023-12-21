@@ -1,33 +1,30 @@
 version: 2.1
-orbs:
-  python: circleci/python@2.1.1
+
 jobs:
   build:
-    machine:
-      resource_class: large
+    docker:
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run:
-          name: Install Google Chrome Dependencies
+          name: Install System Dependencies
           command: |
             sudo apt-get update
-            sudo apt-get install -y fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libcairo2 libcups2 libgbm1 libgtk-3-0 libpango-1.0-0 libu2f-udev libvulkan1 libxdamage1 libxkbcommon0 xdg-utils
+            sudo apt-get install -y python3-pip google-chrome-stable
       - run:
-          name: Install Google Chrome
+          name: Set up Python Virtual Environment
           command: |
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo dpkg -i google-chrome-stable_current_amd64.deb
-            sudo apt-get -f install
-      - run:
-          name: Set the Python Virtual Environment
-          command: |
+            python -m venv venv
+            source venv/bin/activate
             pip install --upgrade pip
-      - python/install-packages:
-          pip-dependency-file: requirements.txt
-          pkg-manager: pip
-      - run:                    
+      - run:
+          name: Install Python Dependencies
           command: |
-            behave features/login.feature
+            pip install -r requirements.txt
+      - run:
+          name: Run Behave tests
+          command: |
+            behave features/business.feature
 
 workflows:
   version: 2
