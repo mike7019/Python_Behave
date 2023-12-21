@@ -3,7 +3,8 @@ orbs:
   python: circleci/python@1.1.0
 jobs:
   build:
-    executor: python/default
+    docker:
+      - image: cimg/python:3.9.2  # Use a Python image compatible with your project
     steps:
       - checkout
       - run:
@@ -18,11 +19,11 @@ jobs:
             sudo dpkg -i google-chrome-stable_current_amd64.deb
             sudo apt-get -f install
       - run:
-            name: Set the Python Virtual Environment
-            command: |
-                python -m venv venv
-                source venv/bin/activate
-                pip install --upgrade pip
+          name: Set the Python Virtual Environment
+          command: |
+            python -m venv venv
+            source venv/bin/activate
+            pip install --upgrade pip
       - python/install-packages:
           pip-dependency-file: requirements.txt
           pkg-manager: pip
@@ -31,6 +32,9 @@ jobs:
             behave features/login.feature
 
 workflows:
+  version: 2
   main:
     jobs:
-      - build
+      - build:
+          machine:
+            image: self/self
