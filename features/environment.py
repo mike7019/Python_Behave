@@ -11,9 +11,9 @@ def before_all(context):
     if browser_name.__eq__("chrome"):
         chromedriver_path = 'chromedriver'
         chrome_options = Options()
-        # chrome_options.add_argument("--headless") #mode sin cabeza
-        chrome_options.add_argument("--incognito")
-        chrome_options.add_argument("--start-maximized")
+        chrome_options.add_argument("--headless") #mode sin cabeza
+        # chrome_options.add_argument("--incognito")
+        # chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument("--allow-running-insecure-content")
         chrome_options.add_argument("--disable-popup-blocking")
         chrome_options.add_argument("--disable-infobars")
