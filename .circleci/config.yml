@@ -4,7 +4,8 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/python:3.9.2  # Use a Python image compatible with your project
+      - image: cimg/python:3.9.6  # Use a Python image compatible with your project
+    resource_class: self/self
     steps:
       - checkout
       - run:
@@ -35,6 +36,5 @@ workflows:
   version: 2
   main:
     jobs:
-      - build:
-          machine:
-            image: self/self
+      - build
+
