@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from exceptions import Exceptions
+
 
 
 class Interactions:
@@ -20,7 +20,7 @@ class Interactions:
         actions.move_by_offset(x, y).click().perform()
         time.sleep(1)
 
-    def dropdown_li_list(self, element, text):
+    def dropdown_ul_list(self, element, text):
         element = self.driver.find_element(By.XPATH, element)
         options = element.find_elements(By.TAG_NAME, "li")
         for i in options:
@@ -67,10 +67,3 @@ class Interactions:
     def implicit_wait(self, timeout):
         self.driver.implicitly_wait(timeout)
 
-    try:
-        # Code that may raise one of the above exceptions
-        raise ElementClickInterceptedException()
-    except WebDriverException as e:
-        exceptions =Exceptions.Exceptions()
-        print(f"Caught WebDriverException: {e}")
-        # Handle the exception as needed

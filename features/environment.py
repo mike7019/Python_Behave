@@ -3,7 +3,7 @@ from selenium import webdriver
 import ConfigReader
 
 
-def before_scenario(context, driver):
+def before_all(context):
 
     browser_name = ConfigReader.read_configuration("basic info", "browser")
     if browser_name.__eq__("chrome"):
@@ -16,5 +16,5 @@ def before_scenario(context, driver):
     context.driver.maximize_window()
 
 
-def after_scenario(context, driver):
+def after_all(context):
     context.driver.quit()

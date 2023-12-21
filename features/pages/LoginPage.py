@@ -4,7 +4,6 @@ from selenium.webdriver.support.select import Select
 
 import ConfigReader
 
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
 

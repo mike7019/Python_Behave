@@ -5,11 +5,11 @@ Feature: testing the serenity demo page
   Scenario Outline:
 
     Given that the user is on the login site
-    When he types login data "<username>" "<password>"
-      | browser   | url   | user   | password   |
-      | <browser> | <url> | <user> | <password> |
+    When he types login data "<user>" "<pass>"
+      | browser   | url   | user   | pass   |
+      | <browser> | <url> | <user> | <pass> |
     Examples:
-      | browser | url                                                   | user  | password |
+      | browser | url                                                   | user  | pass |
       | chrome  | https://demo.serenity.is/Account/Login/?ReturnUrl=%2F | admin | serenity |
 
   Scenario: actor wants to create an unit business
