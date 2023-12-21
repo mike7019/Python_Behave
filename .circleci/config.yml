@@ -21,8 +21,6 @@ jobs:
       - run:
           name: Set the Python Virtual Environment
           command: |
-            python -m venv venv
-            source venv/bin/activate
             pip install --upgrade pip
       - python/install-packages:
           pip-dependency-file: requirements.txt
