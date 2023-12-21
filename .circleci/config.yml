@@ -7,11 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install System Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y python3-pip google-chrome-stable
-      - run:
           name: Set up Python Virtual Environment
           command: |
             python -m venv venv
