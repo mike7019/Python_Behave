@@ -28,7 +28,7 @@ jobs:
           pkg-manager: pip
       - run:                    
           command: |
-            behave features/business.feature
+            behave features/login.feature
 
 workflows:
   main:
