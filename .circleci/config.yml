@@ -3,9 +3,8 @@ orbs:
   python: circleci/python@1.1.0
 jobs:
   build:
-    docker:
-      - image: cimg/python:3.9.6  # Use a Python image compatible with your project
-    resource_class: self/self
+    machine:
+      image: self/self
     steps:
       - checkout
       - run:
