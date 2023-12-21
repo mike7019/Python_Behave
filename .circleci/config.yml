@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     machine:
-      image: self/self
+      resource_class: large
     steps:
       - checkout
       - run:
@@ -36,4 +36,3 @@ workflows:
   main:
     jobs:
       - build
-
