@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.8
+    resource_class: my_pc/self
     steps:
       - checkout
       - run:
