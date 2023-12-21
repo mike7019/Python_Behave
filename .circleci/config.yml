@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  python: circleci/python@3.9.6
+  python: circleci/python@3.9.2
 jobs:
   build:
     machine:
