@@ -1,7 +1,6 @@
 from behave import given, when, then
 
-from features.pages import DashboardPage
-from features.pages.DashboardPage import AssertionUtils
+from features.pages.DashboardPage import DashboardPage
 from features.pages.LoginPage import LoginPage
 
 
@@ -21,6 +20,9 @@ def step_impl(context, username, password):
 
 @then(u'will see the "{text}" page')
 def step_impl(context, text):
+    dashboard_page = DashboardPage(context.driver)
     expected_title = text
-    DashboardPage.AssertionUtils(expected_title)
+    actual_title = dashboard_page.get_dashboard_title()
+    assert expected_title == actual_title, f"Expected title: {expected_title}, Actual title: {actual_title}"
+
 
