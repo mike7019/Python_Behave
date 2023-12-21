@@ -7,6 +7,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Google Chrome
+          command: |
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome-stable_current_amd64.deb
+            sudo apt-get -f install
+      - run:
             name: Set the Python Virtual Environment
             command: |
                 python -m venv venv
